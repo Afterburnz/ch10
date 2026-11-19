@@ -60,4 +60,31 @@ public class Fraction {
 			System.out.println("Error: Denominator can't be zero");
 		}
 	}
+	public static Fraction mult (Fraction a, Fraction b) {
+		int n = a.getNum() * b.getNum();
+		int d = a.getDenom() * b.getDenom();
+		return new Fraction(n,d);
+	}
+	public static Fraction divide (Fraction a, Fraction b) {
+		int n = a.getNum() * b.getDenom();
+		int d = a.getDenom() * b.getNum();
+		return new Fraction(n,d);
+	}	
+	public void reduce() {
+		int gcf = Fraction.GCF(numerator, denominator);
+		numerator /= gcf;
+		denominator /= gcf;
+	}
+	
+	// helper methods
+	public static int GCF (int a, int b) {
+		while (a != b) {
+			if (a > b) {
+				a -= b;
+			} else {
+				b -= a;
+			}
+		}
+		return a;
+	}
 }
